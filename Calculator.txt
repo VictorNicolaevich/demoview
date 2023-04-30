@@ -1,0 +1,94 @@
+public class Sol {
+    static Map<String, Integer> map = new HashMap<>();
+
+    static {
+        map.put("I", 1);
+        map.put("II", 2);
+        map.put("III", 3);
+        map.put("IV", 4);
+        map.put("V", 5);
+        map.put("VI", 6);
+        map.put("VII", 7);
+        map.put("VIII", 8);
+        map.put("IX", 9);
+        map.put("X", 10);
+    }
+
+    public static void main(String[] args) throws IOException {
+        System.out.println("Enter of parameters");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        String[] dataOn = reader.readLine().split(" ");
+        Set<String> set = map.keySet();
+        if (dataOn.length != 3) {
+            try {
+                throw new Exception();
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println(e.getMessage());
+                System.out.println("Формат математической операции не удовлетворяет заданию");
+            }
+            return;
+        }
+        int one = 0;
+        int two = 0;
+        int first = 0;
+        int second = 0;
+        
+        try {  one = Integer.parseInt(dataOn[0]);
+               two = Integer.parseInt(dataOn[2]);
+   
+                  if (((0 < one && one <= 10) && (0 < two && two <= 10))) { 
+                       switch (dataOn[1]) {
+                           case "+" -> System.out.println(one + two);
+                           case "-" -> System.out.println(one - two);
+                           case "*" -> System.out.println(one * two);
+                           case "/" -> System.out.println(one / two);
+                           default -> System.out.println("Unavailable operation!");
+                       }
+                   } else {
+                       System.out.println("Uncorrect numbers!");
+                  }
+
+
+        } catch (Exception e) {
+            for (String s : set) {
+                if (dataOn[0].equals(s)) {
+                    first = map.get(s);
+                }
+                if (dataOn[2].equals(s)) {
+                    second = map.get(s);
+                }
+            }
+            try {
+
+                    switch (dataOn[1]) {
+                        case "+" -> System.out.println(convert(first + second));
+                        case "-" -> System.out.println(convert(first - second));
+                        case "*" -> System.out.println(convert(first * second));
+                        case "/" -> System.out.println(convert(first / second));
+                        default -> System.out.println("Unavailable operation!");
+                    }
+            } catch (Exception ex)  {
+                ex.printStackTrace();
+                System.out.println("Uncorrect enter!");
+            }
+
+        }
+    }
+        static String convert(int i) {
+
+      String[] latin = {"I","II","III","IV","V","VI","VII","VIII","IX","X",
+              "XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX","XX",
+              "XXI","XXII","XXIII","XXIV","XXV","XXVI","XXVII","XXVIII","XXIX","XXX",
+              "XXXI","XXXII","XXXIII","XXXIV","XXXV","XXXVI","XXXVII","XXXVIII","XXXIX","XL",
+              "XLI","XLII","XLIII","XLIV","XLV","XLVI","XLVII","XLVIII","XLIX","L",
+              "LI","LII","LIII","LIV","LV","LVI","LVII","LVIII","LIX","LX",
+              "LXI","LXII","LXIII","LXIV","LXV","LXVI","LXVII","LXVIII","LXIX","LXX",
+              "LXXI","LXXII","LXXIII","LXXIV","LXXV","LXXVI","LXXVII","LXXVIII","LXXIX","LXXX",
+              "LXXXI","LXXXII","LXXXIII","LXXXIV","LXXXV","LXXXVI","LXXXVII","LXXXVIII","LXXXIX","XC",
+              "XCI","XCII","XCIII","XCIV","XCV","XCVI","XCVII","XCVIII","XCIX","C"};
+
+        return latin[i - 1];
+        }
+        }
