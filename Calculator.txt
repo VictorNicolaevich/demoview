@@ -92,3 +92,54 @@ public class Calculator {
         return latin[i - 1];
         }
         }
+        
+        // Converter from latin numbers to arabic
+/*        import java.io.*;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Converter {
+public static void main(String[] args) throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        String latinNumbers = scanner.nextLine();
+        System.out.println("Year to arabic numbers - " + convertLatToArab(latinNumbers.toUpperCase()));
+        }
+
+        public static int convertLatToArab(String str) {
+            Map<String, Integer> map = new HashMap<>();
+            map.put("I", 1);
+            map.put("IV", 4);
+            map.put("V", 5);
+            map.put("IX", 9);
+            map.put("X", 10);
+            map.put("XL", 40);
+            map.put("L", 50);
+            map.put("XC", 90);
+            map.put("C", 100);
+            map.put("CD", 400);
+            map.put("D", 500);
+            map.put("CM", 900);
+            map.put("M", 1000);
+
+            if (str == null) {
+                return 0;
+            }
+            int summ = 0;
+          
+            Set<String> set = map.keySet();
+            Pattern pattern = Pattern.compile("M|(?<=(\\b|\\s|M))CM|D|(?<=(\\b|\\s|M))CD|C|" +
+                    "(?<=(\\b|\\s|M|D|C))XC|L|(?<=(\\b|\\s|M|D|C))XL|X|IX(?=\\b)|V|IV(?=\\b)|I");
+            Matcher matcher = pattern.matcher(str);
+            if (matcher.find()) {
+                for (String m : set) {
+                if (matcher.group().equals(m)) {
+                summ += map.get(m);
+                }
+                }
+           summ += convertLatToArab(str.replaceFirst(matcher.group(), ""));
+        }
+            return summ;
+        }
+    }
+*/
