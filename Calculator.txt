@@ -76,9 +76,32 @@ public class Calculator {
 
         }
     }
-        static String convert(int i) {
+        static String convert(int data) {
+        
+        String[] latNum = {"I","IV","V","IX","X","XL","L","XC","C","CD","D","CM","M"};
+        Integer[] integers = {1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000};
+        String latCalendar = "";
+        int result;
+        Integer[] repeatLatNumb = new Integer[integers.length];
+        while (data > 0) {
+            for (int i = integers.length - 1; i >= 0; i--) {
+                result = data / integers[i];
+                if (result > 0) {
+                    repeatLatNumb[i] = result;
+                }
+                data = data - result * integers[i];
+            }
+        }
+        for (int i = repeatLatNumb.length - 1; i >= 0; i--) {
+            if (repeatLatNumb[i] != null) {
+                for (int j = 0; j < repeatLatNumb[i]; j++) {
+                    latCalendar += latNum[i];
+                }
+            }
+        }
+        return latCalendar;
 
-      String[] latin = {"I","II","III","IV","V","VI","VII","VIII","IX","X",
+    /*  String[] latin = {"I","II","III","IV","V","VI","VII","VIII","IX","X",    //outdated
               "XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX","XX",
               "XXI","XXII","XXIII","XXIV","XXV","XXVI","XXVII","XXVIII","XXIX","XXX",
               "XXXI","XXXII","XXXIII","XXXIV","XXXV","XXXVI","XXXVII","XXXVIII","XXXIX","XL",
@@ -89,7 +112,7 @@ public class Calculator {
               "LXXXI","LXXXII","LXXXIII","LXXXIV","LXXXV","LXXXVI","LXXXVII","LXXXVIII","LXXXIX","XC",
               "XCI","XCII","XCIII","XCIV","XCV","XCVI","XCVII","XCVIII","XCIX","C"};
 
-        return latin[i - 1];
+        return latin[data - 1];  */
         }
         }
         
